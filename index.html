@@ -26,11 +26,12 @@
   </div>
   <script>
     var allPosts = [];
-    function formatDate(d) {
+    function formatDate(d, t) {
       if (!d) return '';
       var p = d.split('-');
       var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      return months[parseInt(p[1],10)-1] + ' ' + parseInt(p[2],10) + ', ' + p[0];
+      var base = months[parseInt(p[1],10)-1] + ' ' + parseInt(p[2],10) + ', ' + p[0];
+      return t ? base + ' · ' + t + ' UTC' : base;
     }
     function escHtml(s) {
       return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
@@ -42,7 +43,7 @@
       nr.style.display = 'none';
       ul.innerHTML = posts.map(function(p) {
         return '<li><a href="post.html?slug=' + encodeURIComponent(p.slug) + '">' +
-          escHtml(p.title) + '</a><span class="post-date">' + formatDate(p.date) + '</span></li>';
+          escHtml(p.title) + '</a><span class="post-date">' + formatDate(p.date, p.time) + '</span></li>';
       }).join('');
     }
     function doSearch(q) {

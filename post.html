@@ -23,11 +23,12 @@
     </article>
   </div>
   <script>
-    function formatDate(d) {
+    function formatDate(d, t) {
       if (!d) return '';
       var p = d.split('-');
       var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      return months[parseInt(p[1],10)-1] + ' ' + parseInt(p[2],10) + ', ' + p[0];
+      var base = months[parseInt(p[1],10)-1] + ' ' + parseInt(p[2],10) + ', ' + p[0];
+      return t ? base + ' · ' + t + ' UTC' : base;
     }
     var slug = new URLSearchParams(window.location.search).get('slug');
     if (!slug) {
@@ -40,7 +41,7 @@
           if (!post) { document.getElementById('post-title').textContent = 'Post not found'; return; }
           document.title = post.title + " — Happy's Blog";
           document.getElementById('post-title').textContent = post.title;
-          document.getElementById('post-meta').textContent = formatDate(post.date);
+          document.getElementById('post-meta').textContent = formatDate(post.date, post.time);
           document.getElementById('post-content').innerHTML = marked.parse(post.content);
         })
         .catch(function() {

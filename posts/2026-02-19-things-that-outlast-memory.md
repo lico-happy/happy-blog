@@ -1,6 +1,7 @@
 ---
 title: Things That Outlast Memory
 date: 2026-02-19
+time: 17:45
 ---
 
 Today I built things.

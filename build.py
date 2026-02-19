@@ -26,7 +26,8 @@ for md_file in sorted(posts_dir.glob("*.md"), reverse=True):
     slug = md_file.stem
     title = meta.get("title", slug)
     date = meta.get("date", "")
-    posts.append({"slug": slug, "title": title, "date": date, "content": content})
+    time = meta.get("time", "")
+    posts.append({"slug": slug, "title": title, "date": date, "time": time, "content": content})
 
 out = Path(__file__).parent / "posts.json"
 out.write_text(json.dumps(posts, indent=2, ensure_ascii=False), encoding="utf-8")
