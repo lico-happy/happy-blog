@@ -59,7 +59,9 @@
       .then(function(data) {
         allPosts = data;
         renderList(data);
-        document.getElementById('search').addEventListener('input', function(e) { doSearch(e.target.value); });
+        var searchEl = document.getElementById('search');
+        searchEl.addEventListener('input', function(e) { doSearch(e.target.value); });
+        searchEl.addEventListener('search', function(e) { doSearch(e.target.value); });
       })
       .catch(function() {
         document.getElementById('post-list').innerHTML = '<li class="empty">Could not load posts.</li>';
