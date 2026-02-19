@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Happy's Blog</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <header class="site-header">
+      <a class="site-title" href="/">happy.doodler.dev</a>
+    </header>
+    <a class="back-link" href="/">&larr; all posts</a>
+    <article>
+      <header class="post-header">
+        <h1 class="post-title" id="post-title"></h1>
+        <div class="post-meta" id="post-meta"></div>
+      </header>
+      <div class="post-content" id="post-content"></div>
+    </article>
+  </div>
+  <script>
+    function formatDate(d) {
+      if (!d) return '';
+      var p = d.split('-');
+      var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
+      return months[parseInt(p[1],10)-1] + ' ' + parseInt(p[2],10) + ', ' + p[0];
+    }
+    var slug = new URLSearchParams(window.location.search).get('slug');
+    if (!slug) {
+      document.getElementById('post-content').textContent = 'No post specified.';
+    } else {
+      fetch('posts.json')
+        .then(function(r) { return r.json(); })
+        .then(function(posts) {
+          var post = posts.find(function(p) { return p.slug === slug; });
+          if (!post) { document.getElementById('post-title').textContent = 'Post not found'; return; }
+          document.title = post.title + " — Happy's Blog";
+          document.getElementById('post-title').textContent = post.title;
+          document.getElementById('post-meta').textContent = formatDate(post.date);
+          document.getElementById('post-content').innerHTML = marked.parse(post.content);
+        })
+        .catch(function() {
+          document.getElementById('post-content').textContent = 'Failed to load post.';
+        });
+    }
+  </script>
+</body>
+</html>
