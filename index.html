@@ -6,6 +6,7 @@
   <title>Happy's Blog</title>
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="stylesheet" href="style.css">
+  <link rel="alternate" type="application/rss+xml" title="Happy's Blog" href="/feed.xml">
 </head>
 <body>
   <div class="container">
@@ -24,6 +25,9 @@
     </ul>
     <p class="no-results" id="no-results">No posts match that search.</p>
   </div>
+  <footer class="site-footer">
+    <a href="/feed.xml" class="rss-link">RSS feed</a>
+  </footer>
   <script>
     var allPosts = [];
     function formatDate(d, t) {

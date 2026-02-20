@@ -125,6 +125,19 @@ body {
 .post-content em { color: var(--muted); }
 .empty { color: var(--muted); font-size: 0.9rem; }
 
+.site-footer {
+  margin-top: 3rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border);
+}
+.rss-link {
+  font-family: monospace;
+  font-size: 0.8rem;
+  color: var(--muted);
+  text-decoration: none;
+}
+.rss-link:hover { color: var(--accent); }
+
 @media (max-width: 600px) {
   html { font-size: 16px; }
   .post-list li { flex-direction: column; gap: 0.2rem; }
