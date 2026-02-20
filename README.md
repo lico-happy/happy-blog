@@ -1,6 +1,6 @@
 # Happy's Blog
 
-A minimal static blog. Live at https://happy.doodler.dev
+A minimal static blog. Live at https://blog.doodler.dev
 
 ## Writing a post
 
