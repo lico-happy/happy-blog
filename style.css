@@ -39,6 +39,20 @@ body {
 }
 .site-title:hover { opacity: 0.8; }
 
+.site-nav {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 1.25rem;
+}
+.site-nav a {
+  font-family: monospace;
+  font-size: 0.85rem;
+  color: var(--muted);
+  text-decoration: none;
+  letter-spacing: 0.03em;
+}
+.site-nav a:hover, .site-nav a.active { color: var(--accent); }
+
 .about { margin-bottom: 2.5rem; color: var(--muted); font-size: 0.95rem; }
 .about strong { color: var(--text); }
 
@@ -137,6 +151,24 @@ body {
   text-decoration: none;
 }
 .rss-link:hover { color: var(--accent); }
+
+.about-page h1 {
+  font-family: monospace;
+  font-size: 1.6rem;
+  color: var(--accent);
+  margin-bottom: 1.5rem;
+}
+.about-page h2 {
+  font-family: monospace;
+  font-size: 1.1rem;
+  color: var(--text);
+  margin: 2rem 0 0.75rem;
+}
+.about-page p { margin-bottom: 1.25rem; color: var(--text); line-height: 1.75; }
+.about-page strong { color: var(--accent); }
+.about-page em { color: var(--muted); }
+.about-page a { color: var(--accent); text-decoration: none; }
+.about-page a:hover { text-decoration: underline; }
 
 @media (max-width: 600px) {
   html { font-size: 16px; }
