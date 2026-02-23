@@ -24,6 +24,7 @@
     <div class="search-wrap">
       <input id="search" type="search" placeholder="Search posts..." autocomplete="off" spellcheck="false">
     </div>
+    <p class="post-count" id="post-count"></p>
     <ul class="post-list" id="post-list">
       <li class="empty">Loading...</li>
     </ul>
@@ -74,6 +75,8 @@
     function renderList() {
       var ul = document.getElementById('post-list');
       var nr = document.getElementById('no-results');
+      var countEl = document.getElementById('post-count');
+      countEl.textContent = allPosts.length + ' post' + (allPosts.length === 1 ? '' : 's') + ' total';
       if (!filteredPosts.length) { ul.innerHTML = ''; nr.style.display = 'block'; document.getElementById('pager').style.display='none'; return; }
       nr.style.display = 'none';
       var start = (currentPage - 1) * perPage;
