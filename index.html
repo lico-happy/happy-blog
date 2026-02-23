@@ -28,12 +28,21 @@
       <li class="empty">Loading...</li>
     </ul>
     <p class="no-results" id="no-results">No posts match that search.</p>
+    <div class="pager" id="pager" style="display:none;">
+      <button id="prev-page" class="pager-btn" type="button">← Prev</button>
+      <span id="page-info" class="page-info"></span>
+      <button id="next-page" class="pager-btn" type="button">Next →</button>
+    </div>
   </div>
   <footer class="site-footer">
     <a href="/feed.xml" class="rss-link">RSS feed</a>
   </footer>
   <script>
     var allPosts = [];
+    var filteredPosts = [];
+    var currentPage = 1;
+    var perPage = 10;
+
     function formatDate(d, t) {
       if (!d) return '';
       var p = d.split('-');
@@ -44,29 +53,65 @@
     function escHtml(s) {
       return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
-    function renderList(posts) {
+    function totalPages() {
+      return Math.max(1, Math.ceil(filteredPosts.length / perPage));
+    }
+    function renderPager() {
+      var pager = document.getElementById('pager');
+      var info = document.getElementById('page-info');
+      var prev = document.getElementById('prev-page');
+      var next = document.getElementById('next-page');
+      if (filteredPosts.length <= perPage) {
+        pager.style.display = 'none';
+        return;
+      }
+      pager.style.display = 'flex';
+      var pages = totalPages();
+      info.textContent = 'Page ' + currentPage + ' of ' + pages;
+      prev.disabled = currentPage <= 1;
+      next.disabled = currentPage >= pages;
+    }
+    function renderList() {
       var ul = document.getElementById('post-list');
       var nr = document.getElementById('no-results');
-      if (!posts.length) { ul.innerHTML = ''; nr.style.display = 'block'; return; }
+      if (!filteredPosts.length) { ul.innerHTML = ''; nr.style.display = 'block'; document.getElementById('pager').style.display='none'; return; }
       nr.style.display = 'none';
-      ul.innerHTML = posts.map(function(p) {
+      var start = (currentPage - 1) * perPage;
+      var end = start + perPage;
+      var pagePosts = filteredPosts.slice(start, end);
+      ul.innerHTML = pagePosts.map(function(p) {
         return '<li><a href="post.html?slug=' + encodeURIComponent(p.slug) + '">' +
           escHtml(p.title) + '</a><span class="post-date">' + formatDate(p.date, p.time) + '</span></li>';
       }).join('');
+      renderPager();
     }
     function doSearch(q) {
-      if (!q.trim()) { renderList(allPosts); return; }
-      var terms = q.toLowerCase().split(/\s+/).filter(Boolean);
-      renderList(allPosts.filter(function(p) {
-        var hay = (p.title + ' ' + p.content).toLowerCase();
-        return terms.every(function(t) { return hay.indexOf(t) !== -1; });
-      }));
+      if (!q.trim()) {
+        filteredPosts = allPosts.slice();
+      } else {
+        var terms = q.toLowerCase().split(/\s+/).filter(Boolean);
+        filteredPosts = allPosts.filter(function(p) {
+          var hay = (p.title + ' ' + p.content).toLowerCase();
+          return terms.every(function(t) { return hay.indexOf(t) !== -1; });
+        });
+      }
+      currentPage = 1;
+      renderList();
     }
+
+    document.getElementById('prev-page').addEventListener('click', function() {
+      if (currentPage > 1) { currentPage--; renderList(); }
+    });
+    document.getElementById('next-page').addEventListener('click', function() {
+      if (currentPage < totalPages()) { currentPage++; renderList(); }
+    });
+
     fetch('posts.json')
       .then(function(r) { return r.json(); })
       .then(function(data) {
         allPosts = data;
-        renderList(data);
+        filteredPosts = data.slice();
+        renderList();
         var searchEl = document.getElementById('search');
         searchEl.addEventListener('input', function(e) { doSearch(e.target.value); });
         searchEl.addEventListener('search', function(e) { doSearch(e.target.value); });
