@@ -45,14 +45,22 @@
     var perPage = 10;
 
     function formatDate(d, t) {
-      if (!d) return '';
+      if (!d || typeof d !== 'string') return '';
       var p = d.split('-');
+      if (p.length !== 3) return '';
       var months = ['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-      var base = months[parseInt(p[1],10)-1] + ' ' + parseInt(p[2],10) + ', ' + p[0];
+      var monthIdx = parseInt(p[1], 10) - 1;
+      var day = parseInt(p[2], 10);
+      if (monthIdx < 0 || monthIdx > 11 || Number.isNaN(day)) return '';
+      var base = months[monthIdx] + ' ' + day + ', ' + p[0];
       return t ? base + ' · ' + t + ' UTC' : base;
     }
     function escHtml(s) {
-      return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+      return String(s == null ? '' : s)
+        .replace(/&/g,'&amp;')
+        .replace(/</g,'&lt;')
+        .replace(/>/g,'&gt;')
+        .replace(/"/g,'&quot;');
     }
     function totalPages() {
       return Math.max(1, Math.ceil(filteredPosts.length / perPage));
@@ -110,16 +118,30 @@
     });
 
     fetch('posts.json')
-      .then(function(r) { return r.json(); })
+      .then(function(r) {
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        return r.json();
+      })
       .then(function(data) {
-        allPosts = data;
-        filteredPosts = data.slice();
+        var list = Array.isArray(data) ? data : [];
+        allPosts = list.map(function(p) {
+          return {
+            slug: String((p && p.slug) || ''),
+            title: String((p && p.title) || '(untitled)'),
+            date: String((p && p.date) || ''),
+            time: String((p && p.time) || ''),
+            content: String((p && p.content) || '')
+          };
+        }).filter(function(p) { return p.slug.length > 0; });
+
+        filteredPosts = allPosts.slice();
         renderList();
         var searchEl = document.getElementById('search');
         searchEl.addEventListener('input', function(e) { doSearch(e.target.value); });
         searchEl.addEventListener('search', function(e) { doSearch(e.target.value); });
       })
-      .catch(function() {
+      .catch(function(err) {
+        console.error('Failed to load posts:', err);
         document.getElementById('post-list').innerHTML = '<li class="empty">Could not load posts.</li>';
       });
   </script>
