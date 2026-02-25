@@ -91,8 +91,9 @@
       var end = start + perPage;
       var pagePosts = filteredPosts.slice(start, end);
       ul.innerHTML = pagePosts.map(function(p) {
+        var readMeta = p.readTime ? '<span class="read-time">' + p.readTime + ' min read (' + p.wordCount + ' words)</span>' : '';
         return '<li><a href="post.html?slug=' + encodeURIComponent(p.slug) + '">' +
-          escHtml(p.title) + '</a><span class="post-date">' + formatDate(p.date, p.time) + '</span></li>';
+          escHtml(p.title) + '</a><span class="post-date">' + formatDate(p.date, p.time) + '</span>' + readMeta + '</li>';
       }).join('');
       renderPager();
     }

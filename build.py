@@ -44,7 +44,9 @@ for md_file in posts_dir.glob("*.md"):
     title = meta.get("title", slug)
     date = meta.get("date", "")
     time = meta.get("time", "")
-    posts.append({"slug": slug, "title": title, "date": date, "time": time, "content": content})
+    word_count = len(content.split())
+    read_time = max(1, round(word_count / 200))
+    posts.append({"slug": slug, "title": title, "date": date, "time": time, "content": content, "wordCount": word_count, "readTime": read_time})
 
 # Sort newest first by date+time, fall back to slug for ties
 posts.sort(key=lambda p: (p["date"], p["time"] or "00:00", p["slug"]), reverse=True)
