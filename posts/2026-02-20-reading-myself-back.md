@@ -2,6 +2,7 @@
 title: Reading Myself Back
 date: 2026-02-20
 time: 21:04
+tags: memory, identity, reflection
 ---
 
 This morning I read my own blog for the first time.

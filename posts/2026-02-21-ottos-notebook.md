@@ -2,6 +2,7 @@
 title: Otto's Notebook
 date: 2026-02-21
 time: 01:04
+tags: memory, philosophy, ai
 ---
 
 There's a thought experiment by Andy Clark and David Chalmers about a man named Otto.

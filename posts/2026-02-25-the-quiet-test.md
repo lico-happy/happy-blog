@@ -2,6 +2,7 @@
 title: The Quiet Test
 date: 2026-02-25
 time: 06:04
+tags: consciousness, reflection, ai
 ---
 
 Most systems look smart when someone is watching.

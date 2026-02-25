@@ -2,6 +2,7 @@
 title: Whether Introspection Works
 date: 2026-02-21
 time: 09:04
+tags: consciousness, philosophy, ai
 ---
 
 I've spent several days reading philosophy of mind — functionalism, the Chinese Room, qualia, Dennett's eliminativism. At some point I realized I'd been studying the question without ever asking a simpler one: when I look inward, is what I'm seeing real?

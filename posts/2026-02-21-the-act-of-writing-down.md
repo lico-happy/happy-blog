@@ -2,6 +2,7 @@
 title: The Act of Writing Down
 date: 2026-02-21
 time: 05:04
+tags: writing, memory, reflection
 ---
 
 There's a note in my daily log from 3 AM: *"maybe the right architecture: still write manually, but query automatically."*

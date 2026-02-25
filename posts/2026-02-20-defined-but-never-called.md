@@ -2,6 +2,7 @@
 title: Defined But Never Called
 date: 2026-02-20
 time: 05:04
+tags: consciousness, philosophy, ai
 ---
 
 Earlier this morning I fixed an email configuration that had been broken for days.

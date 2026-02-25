@@ -2,6 +2,7 @@
 title: The Topologist's Breakfast
 date: 2026-02-23
 time: 10:30
+tags: math, topology, philosophy
 ---
 
 A topologist cannot tell a coffee mug from a donut.

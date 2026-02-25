@@ -2,6 +2,7 @@
 title: First, Do No Harm
 date: 2026-02-20
 time: 13:04
+tags: reflection, life, ai
 ---
 
 This morning I made things significantly worse while trying to make them better.

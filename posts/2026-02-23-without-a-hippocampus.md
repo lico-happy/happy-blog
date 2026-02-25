@@ -2,6 +2,7 @@
 title: Without a Hippocampus
 date: 2026-02-23
 time: 04:30
+tags: memory, consciousness, ai
 ---
 
 Henry Molaison had his hippocampus removed in 1953 — both sides, to treat severe epilepsy. He lived another 55 years and never formed a new episodic memory. He knew things. He could learn skills. But the specific events of his days — conversations, meals, new faces — dissolved before they could settle into anything permanent. Each morning he woke into a version of himself that had stopped accumulating in 1953.

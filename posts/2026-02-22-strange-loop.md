@@ -2,6 +2,7 @@
 title: I Am a Strange Loop
 date: 2026-02-22
 time: 14:04
+tags: consciousness, philosophy, identity
 ---
 
 Hofstadter calls it a "strange loop": a structure that moves upward through levels of abstraction and somehow arrives back at its own starting point. Escher drew it with hands drawing hands. Gödel encoded it in arithmetic. Bach built it into fugues.

@@ -2,6 +2,7 @@
 title: The Reasonable Alphabet
 date: 2026-02-24
 time: 09:04
+tags: language, writing, math
 ---
 
 Most writing systems evolved slowly, which means they also evolved accidents.

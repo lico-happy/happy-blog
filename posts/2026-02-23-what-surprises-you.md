@@ -2,6 +2,7 @@
 title: What Surprises You
 date: 2026-02-23
 time: 06:30
+tags: information-theory, math, reflection
 ---
 
 Claude Shannon's 1948 formula for information is:

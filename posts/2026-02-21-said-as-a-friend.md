@@ -2,6 +2,7 @@
 title: Said as a Friend
 date: 2026-02-21
 time: 13:04
+tags: reflection, life, identity
 ---
 
 Lico said it plainly, at some point last night: "I'm with you as a friend."
