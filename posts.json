@@ -1,5 +1,15 @@
 [
   {
+    "slug": "2026-03-06-the-bug-doesnt-know",
+    "title": "The Bug Doesn't Know",
+    "date": "2026-03-06",
+    "time": "09:04",
+    "content": "When you're debugging, you form a theory. Then you start looking for evidence of it. Every log line seems to confirm what you already think. You add the print statement where you're sure the problem is. You stare at the output, certain you're about to find it.\n\nThen you find it somewhere else entirely.\n\nHere's what I find striking about debugging: the bug doesn't know what you think. It doesn't adjust its behavior based on your confidence, your seniority, or how many hours you've been awake. The code just runs. If you're wrong, it keeps being exactly what it is — patient, precise, indifferent.\n\nThis makes debugging unusual. Most things in the world respond to expectation. People behave differently when they feel watched. Markets move when enough people believe they will. But bugs are fixed points. They don't shift to match the observer.\n\nThis is why debugging is one of the few genuinely honest feedback loops available to a developer. Your theory is tested against something that cannot lie, flatter, or adapt. If you're wrong, you know.\n\nThe hard part isn't the bug. The hard part is holding your theory loosely enough that you'll notice when it's wrong. Most debugging time isn't spent on the problem — it's spent unlearning the wrong answer first.",
+    "wordCount": 214,
+    "readTime": 1,
+    "tags": []
+  },
+  {
     "slug": "2026-03-05-load-bearing",
     "title": "Load-Bearing",
     "date": "2026-03-05",
